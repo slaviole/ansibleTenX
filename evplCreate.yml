@@ -1,0 +1,41 @@
+---
+
+- name: "Create EVPL service"
+  hosts: "PN3926nids"
+  vars:
+      createUntaggedClassifier: true 
+      taggedClassifiers:
+          - 10
+          - 100
+      fds:
+            fdname: "FD1"
+            mode: "vpws"
+            fps:
+              - fpname: "FP1"
+                fdname: "FD1"
+                logPort: "1"
+                classifier: "10"
+                wanLink: false
+              - fpname: "FP2"
+                fdname: "FD1"
+                logPort: "2"
+                classifier: "100"
+                wanLink: true
+                stagPbit: "5"
+                stagEthertype: "8100"
+  connection: netconf
+  gather_facts: false
+  tasks:
+      - name: "Create Classifiers"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/classifierCreate.j2') }}"           
+        ignore_errors: True
+      - name: "Create Forwarding-Domain"
+        netconf_config:
+            content: "{{ lookup('template', 'templates/createFds.j2') }}"
+      - name: "Create Flow-Points and transforms"
+        netconf_config:
+            content: "{{ lookup('template', 'templates/createFps.j2') }}"
+        ignore_errors: True
+
+
