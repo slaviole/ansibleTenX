@@ -5,8 +5,8 @@
 #            hosts:
 #                3903x_4: ansible_ssh_host=192.168.2.4
 
-3926_T1 ansible_ssh_host=192.168.2.4 ansible_user=diag ansible_password=ciena123 ansible_python_interpreter=/home/slaviole/ansibleTenX/venv/bin/python
-3926_T2 ansible_ssh_host=192.168.2.5 ansible_user=diag ansible_password=ciena123 ansible_python_interpreter=/home/slaviole/ansibleTenX/venv/bin/python
+3926_T1 ansible_ssh_host=192.168.161.201 ansible_user=diag ansible_password=ciena123 ansible_python_interpreter=/home/slaviole/ansibleTenX/venv/bin/python
+3926_T2 ansible_ssh_host=192.168.161.202 ansible_user=diag ansible_password=ciena123 ansible_python_interpreter=/home/slaviole/ansibleTenX/venv/bin/python
 
 [PN3926nids]
 3926_T1
