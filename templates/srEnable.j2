@@ -1,0 +1,14 @@
+<config>  
+  <segment-routing xmlns="http://ciena.com/ns/yang/ciena-sr">
+    <connected-prefix-sid-map>
+      <prefix>{{ lbkIP }}/32</prefix>
+      <interface>lbk0</interface>
+      <value-type>index</value-type>
+      <start-sid>{{ startSid }}</start-sid>
+    </connected-prefix-sid-map>
+    <srgb>
+      <lower-bound>{{ srgbLower }}</lower-bound>
+      <upper-bound>{{ srgbUpper }}</upper-bound>
+    </srgb>
+  </segment-routing>
+</config>

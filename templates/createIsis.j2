@@ -1,0 +1,53 @@
+<config>  
+  <isis xmlns="http://ciena.com/ns/yang/ciena-isis">
+    <instance>
+      <tag>{{ isisName }}</tag>
+      <net>49.0000.{{ nsap }}.00</net>
+      <level-type>{{ isisLevel }}</level-type>
+      <fast-reroute>
+        <hold-timer>1000</hold-timer>
+        <level>
+          <level-type>level-2</level-type>
+          <lfa>
+            <per-prefix-enable>true</per-prefix-enable>
+            <remote-lfa>
+              <per-prefix-enable>false</per-prefix-enable>
+              <tunnel-cost>30</tunnel-cost>
+            </remote-lfa>
+            <ti-lfa>
+              <per-prefix-enable>true</per-prefix-enable>
+            </ti-lfa>
+          </lfa>
+        </level>
+      </fast-reroute>
+      <interfaces>
+        <interface>
+          <name>{{ lbkName }}</name>
+          <interface-type>point-to-point</interface-type>
+          <level-type>{{ isisLevel }}</level-type>
+        </interface>
+      {% for int in interfaces %}
+        <interface>
+        <name>int{{ int.logPort }}v{{ int.intVid }}</name>
+          <interface-type>point-to-point</interface-type>
+          <level-type>{{ int.isisPortLevel }}</level-type>
+          <bfd>
+            <enable>false</enable>
+          </bfd>
+        </interface>
+        {% endfor %}
+      </interfaces>
+      <mpls-te>
+          <router-id>{{ lbkIP }}</router-id>
+          <level-type>{{ isisLevel }}</level-type>
+      </mpls-te>
+      <segment-routing>
+        <enabled>true</enabled>
+        <bindings>
+          <advertise>false</advertise>
+          <receive>true</receive>
+        </bindings>
+      </segment-routing>
+    </instance>
+  </isis>
+</config>

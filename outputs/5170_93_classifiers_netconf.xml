@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:ncx="http://netconfcentral.org/ns/yuma-ncx">
+  <classifiers xmlns="urn:ciena:params:xml:ns:yang:ciena-pn::ciena-mef-classifier">
+    <classifier>
+      <name>default-vid-127</name>
+      <filter-entry>
+        <filter-parameter xmlns:classifier="urn:ciena:params:xml:ns:yang:ciena-pn::ciena-mef-classifier">classifier:vtag-stack</filter-parameter>
+        <logical-not>false</logical-not>
+        <vtags>
+          <tag>1</tag>
+          <vlan-id>127</vlan-id>
+        </vtags>
+      </filter-entry>
+    </classifier>
+    <classifier>
+      <name>vlan1000</name>
+      <filter-entry>
+        <filter-parameter xmlns:classifier="urn:ciena:params:xml:ns:yang:ciena-pn::ciena-mef-classifier">classifier:vtag-stack</filter-parameter>
+        <logical-not>false</logical-not>
+        <vtags>
+          <tag>1</tag>
+          <vlan-id>1000</vlan-id>
+        </vtags>
+      </filter-entry>
+    </classifier>
+    <classifier>
+      <name>vlan1004</name>
+      <filter-entry>
+        <filter-parameter xmlns:classifier="urn:ciena:params:xml:ns:yang:ciena-pn::ciena-mef-classifier">classifier:vtag-stack</filter-parameter>
+        <logical-not>false</logical-not>
+        <vtags>
+          <tag>1</tag>
+          <vlan-id>1004</vlan-id>
+        </vtags>
+      </filter-entry>
+    </classifier>
+  </classifiers>
+</data>

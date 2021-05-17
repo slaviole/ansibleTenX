@@ -1,0 +1,44 @@
+<config>  
+  <classifiers>
+    {% if createUntaggedClassifier  %}
+    <classifier>
+      <name>Untagged</name>
+      <filter-entry>
+        <filter-parameter xmlns:classifier="urn:ciena:params:xml:ns:yang:ciena-pn::ciena-mef-classifier">classifier:vtag-stack</filter-parameter>
+        <logical-not>false</logical-not>
+        <untagged-exclude-priority-tagged>true</untagged-exclude-priority-tagged>
+      </filter-entry>
+    </classifier>
+    {% endif %}
+
+    {% for int in interfaces %}
+      <classifier>
+      <name>vlan{{ int.intVid }}</name>
+      <filter-entry>
+        <filter-parameter xmlns:classifier="urn:ciena:params:xml:ns:yang:ciena-pn::ciena-mef-classifier">classifier:vtag-stack</filter-parameter>
+        <logical-not>false</logical-not>
+        <vtags>
+          <tag>1</tag>
+          <vlan-id>{{ int.intVid }}</vlan-id>
+        </vtags>
+      </filter-entry>
+    </classifier>
+    {% endfor %}
+    {% if l2services is defined %}
+    {% for service in l2services %}
+    <classifier operation="replace">
+      <name>vlan{{ service.cVid }}</name>
+      <filter-entry>
+        <filter-parameter xmlns:classifier="urn:ciena:params:xml:ns:yang:ciena-pn::ciena-mef-classifier">classifier:vtag-stack</filter-parameter>
+        <logical-not>false</logical-not>
+        <vtags>
+          <tag>1</tag>
+          <vlan-id>{{ service.cVid }}</vlan-id>
+        </vtags>
+      </filter-entry>
+    </classifier>
+    {% endfor %}
+    {% endif %}
+
+  </classifiers>
+</config>

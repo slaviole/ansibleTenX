@@ -1,0 +1,21 @@
+<config>  
+  <ldp xmlns="http://ciena.com/ns/yang/ciena/ciena-ldp">
+    <instance>
+      <tag>default</tag>
+      <lsr-id>{{ lbkIP }}</lsr-id>
+      <interfaces>
+        <interface>
+          <name>{{ lbkName }}</name>
+          <enable-ipv4>true</enable-ipv4>
+        </interface>
+      </interfaces>
+      <target-ldp>
+        {% for service in l2services %}
+          <peers>
+              <address>{{ service.peerLbkIP }}</address>
+          </peers>
+        {% endfor %}
+      </target-ldp>
+    </instance>
+  </ldp>
+</config>

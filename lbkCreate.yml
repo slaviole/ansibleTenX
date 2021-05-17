@@ -1,0 +1,14 @@
+---
+
+- name: "Create Lbk Interface"
+  hosts: "5170_93"
+  vars:
+      lbkName: "lbk0"
+      lbkIP: "192.168.1.93"
+  connection: netconf
+  gather_facts: false
+  tasks:
+      - name: "Create Loopback"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/createLbk.j2') }}"           
+        ignore_errors: True

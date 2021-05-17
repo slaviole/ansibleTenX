@@ -1,0 +1,50 @@
+---
+
+- name: "Create IP Interfaces"
+  hosts: "5170_94"
+  vars:
+      lbkName: "lbk0"
+      lbkIP: "192.168.1.94"
+      nsap: "1921.6800.1094"
+      isisLevel: "level-1-2"
+      createUntaggedClassifier: false
+      isisName: "ISIS1"
+      interfaces:
+          - intName: int39v1004
+            intVid: "1004"
+            logPort: "39"
+            intIp: "192.168.1.2"
+            intMask: "30"
+            isisPortLevel: "level-2"
+          - intName: int40v1005
+            intVid: "1005"
+            logPort: "40"
+            intIp: "192.168.1.5"
+            intMask: "30"
+            isisPortLevel: "level-2"
+      l2services:
+          - uniPort: "20"
+            cVid: "102"
+            peerLbkIP: "192.168.1.46"
+
+                
+
+  connection: netconf
+  gather_facts: false
+  tasks:
+      - name: "Enable Targetted LDP locally"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/trgtLdpEnable.j2') }}"           
+        ignore_errors: True
+      - name: "Create Targetted LDP Peers"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/trgtLdpPeerCreate.j2') }}"           
+        ignore_errors: True
+      - name: "Create Pseudowires"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/createPw.j2') }}"           
+        ignore_errors: True
+      - name: "Create Classifiers"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/classifierCreate2.j2') }}"           
+        ignore_errors: True

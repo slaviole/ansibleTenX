@@ -1,0 +1,9 @@
+<config>
+  <fds xmlns="urn:ciena:params:xml:ns:yang:ciena-pn:ciena-mef-fd">
+  {% for int in interfaces %}
+    <fd operation=="delete">
+      <name>v{{ int.intVid }}fd</name>
+    </fd>
+  {% endfor %}
+  </fds>
+</config>

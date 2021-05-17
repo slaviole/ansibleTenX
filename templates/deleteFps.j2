@@ -1,0 +1,9 @@
+<config>
+  <fps xmlns="urn:ciena:params:xml:ns:yang:ciena-pn:ciena-mef-fp">
+  {% for fp in fds.fps %}
+    <fp operation="delete">
+        <name>p{{ fp.logPort }}v{{ fp.intVid }}</name>
+    </fp>
+  {% endfor %}
+  </fps>
+</config>

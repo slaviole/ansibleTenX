@@ -1,0 +1,49 @@
+---
+
+- name: "Create IP Interfaces"
+  hosts: "3926_1"
+  vars:
+      lbkName: "lbk0"
+      lbkIP: "192.168.1.93"
+      nsap: "1921.6800.1093"
+      isisLevel: "level-2"
+      createUntaggedClassifier: false
+      isisName: "ISIS1"
+      interfaces:
+          - intName: int39v1000
+            intVid: "1000"
+            logPort: "39"
+            intIp: "192.168.1.10"
+            intMask: "30"
+            isisPortLevel: "level-2"
+          - intName: int40v1004
+            intVid: "1004"
+            logPort: "40"
+            intIp: "192.168.1.1"
+            intMask: "30"
+            isisPortLevel: "level-2"
+
+  connection: netconf
+  gather_facts: false
+  tasks:
+      - name: "Create Classifiers"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/classifierCreate2.j2') }}"           
+        ignore_errors: True
+      - name: "Create Forwarding-Domains"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/createFds2.j2') }}"           
+        ignore_errors: True
+      - name: "Create Flow-Points"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/createFps2.j2') }}"           
+        ignore_errors: True
+      - name: "Create Loopback and Interfaces "
+        netconf_config:
+             content: "{{ lookup('template', 'templates/createInterfaces.j2') }}"           
+        ignore_errors: True
+      - name: "Create ISIS instance and add to interfaces"
+        netconf_config:
+             content: "{{ lookup('template', 'templates/createIsis.j2') }}"           
+        ignore_errors: True
+

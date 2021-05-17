@@ -1,7 +1,7 @@
 ---
 
 - name: "Create EVPL service"
-  hosts: "PN3926nids"
+  hosts: "3926_1"
   vars:
       createUntaggedClassifier: true 
       taggedClassifiers:

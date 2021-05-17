@@ -1,0 +1,9 @@
+<config>  
+  <classifiers>
+    {% for int in interfaces %}
+      <classifier operation="delete">
+         <name>vlan{{ int.intVid }}</name>
+      </classifier>
+    {% endfor %}
+  </classifiers>
+</config>

@@ -1,0 +1,17 @@
+<config>
+  <pseudowires xmlns="urn:ietf:params:xml:ns:yang:ietf-pseudowires">
+    <pseudowire>
+    {% for service in l2services %}
+      <name>svc{{ service.cVid }}</name>
+      <mtu>1500</mtu>
+      <cw-negotiation>non-preferred</cw-negotiation>
+      <configured-pw>
+          <peer-ip>{{ service.peerLbkIP }}</peer-ip>
+          <pw-id>{{ service.cVid }}</pw-id>
+        <pw-status xmlns="http://ciena.com/ns/yang/ciena-ietf-pseudowires">false</pw-status>
+        <pw-status-refresh-timer xmlns="http://ciena.com/ns/yang/ciena-ietf-pseudowires">600</pw-status-refresh-timer>
+      </configured-pw>
+      {% endfor %}
+    </pseudowire>
+  </pseudowires>
+</config>

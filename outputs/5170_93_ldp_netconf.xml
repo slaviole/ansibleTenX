@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:ncx="http://netconfcentral.org/ns/yuma-ncx">
+  <ldp xmlns="http://ciena.com/ns/yang/ciena/ciena-ldp">
+    <instance>
+      <tag>default</tag>
+      <lsr-id>192.168.1.93</lsr-id>
+      <hello-interval>5</hello-interval>
+      <hello-holdtime>15</hello-holdtime>
+      <keepalive-timeout>30</keepalive-timeout>
+      <keepalive-interval>10</keepalive-interval>
+      <control-mode>ordered</control-mode>
+      <pw-status-tlv>false</pw-status-tlv>
+      <inter-area-lsp>false</inter-area-lsp>
+      <interfaces>
+        <interface>
+          <name>lbk0</name>
+          <enable-ipv4>true</enable-ipv4>
+        </interface>
+      </interfaces>
+    </instance>
+  </ldp>
+</data>

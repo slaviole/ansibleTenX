@@ -1,0 +1,25 @@
+<config>
+  <interfaces xmlns="http://openconfig.net/yang/interfaces">
+    <interface>
+      <name>lbk0</name>
+      <config>
+        <name>{{ lbkName }}</name>
+        <type xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">loopback</type>
+        <admin-status xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">true</admin-status>
+        <role xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces" xmlns:cn-if="http://ciena.com/ns/yang/ciena-openconfig-interfaces">cn-if:data</role>
+        <vrfName xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">default</vrfName>
+      </config>
+      <ipv4 xmlns="http://ciena.com/ns/yang/ciena-openconfig-if-ip">
+        <addresses>
+          <address>
+              <ip>{{ lbkIP }}</ip>
+            <config>
+              <ip>{{ lbkIP }}</ip>
+              <prefix-length>32</prefix-length>
+            </config>
+          </address>
+        </addresses>
+      </ipv4>
+    </interface>
+  </interfaces>
+</config>

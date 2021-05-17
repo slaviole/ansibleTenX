@@ -1,0 +1,57 @@
+<config>
+   <interfaces xmlns="http://openconfig.net/yang/interfaces">
+     <interface>
+      <name>lbk0</name>
+      <config>
+        <name>{{ lbkName }}</name>
+        <type xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">loopback</type>
+        <admin-status xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">true</admin-status>
+        <role xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces" xmlns:cn-if="http://ciena.com/ns/yang/ciena-openconfig-interfaces">cn-if:data</role>
+        <vrfName xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">default</vrfName>
+      </config>
+       <ipv4 xmlns="http://ciena.com/ns/yang/ciena-openconfig-if-ip">
+        <addresses>
+          <address>
+              <ip>{{ lbkIP }}</ip>
+            <config>
+              <ip>{{ lbkIP }}</ip>
+              <prefix-length>32</prefix-length>
+            </config>
+          </address>
+        </addresses>
+      </ipv4>
+    </interface>
+    {% for int in interfaces %}
+        <interface>
+          <name>{{ int.intName }}</name>
+          <config>
+            <name>{{ int.intName }}</name>
+            <mtu>1500</mtu>
+            <type xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">ip</type>
+            <admin-status xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">true</admin-status>
+            <role xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces" xmlns:cn-if="http://ciena.com/ns/yang/ciena-openconfig-interfaces">cn-if:data</role>
+            <vrfName xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">default</vrfName>
+            <frame-to-cos-map xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">default-f2c</frame-to-cos-map>
+            <cos-to-frame-map xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">default-c2f</cos-to-frame-map>
+            <stats-collection xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">on</stats-collection>
+            <underlay-binding xmlns="http://ciena.com/ns/yang/ciena-underlay-binding">
+              <config>
+                <fd>v{{ int.intVid }}fd</fd>
+              </config>
+            </underlay-binding>
+          </config>
+           <ipv4 xmlns="http://ciena.com/ns/yang/ciena-openconfig-if-ip">
+            <addresses>
+              <address>
+                  <ip>{{ int.intIp }}</ip>
+                <config>
+                  <ip>{{ int.intIp }}</ip>
+                  <prefix-length>{{ int.intMask }}</prefix-length>
+                </config>
+              </address>
+            </addresses>
+          </ipv4>
+        </interface>
+    {% endfor %}
+ </interfaces>
+</config>

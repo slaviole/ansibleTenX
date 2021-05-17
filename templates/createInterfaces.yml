@@ -1,0 +1,67 @@
+  
+<config>
+<interfaces xmlns="http://openconfig.net/yang/interfaces">
+     <interface>
+      <name>lbk0</name>
+      <config>
+        <name>lbk0</name>
+        <type xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">loopback</type>
+        <admin-status xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">true</admin-status>
+        <role xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces" xmlns:cn-if="http://ciena.com/ns/yang/ciena-openconfig-interfaces">cn-if:data</role>
+        <vrfName xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">default</vrfName>
+      </config>
+       <ipv4 xmlns="http://ciena.com/ns/yang/ciena-openconfig-if-ip">
+        <addresses>
+          <address>
+            <ip>192.168.1.93</ip>
+            <config>
+              <ip>192.168.1.93</ip>
+              <prefix-length>32</prefix-length>
+            </config>
+            <state>
+              <ip>192.168.1.93</ip>
+              <prefix-length>32</prefix-length>
+              <origin>STATIC</origin>
+            </state>
+          </address>
+        </addresses>
+      </ipv4>
+    </interface>
+
+    <interface>
+      <name>int39v1000</name>
+      <config>
+        <name>int39v1000</name>
+        <mtu>1500</mtu>
+        <type xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">ip</type>
+        <admin-status xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">true</admin-status>
+        <role xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces" xmlns:cn-if="http://ciena.com/ns/yang/ciena-openconfig-interfaces">cn-if:data</role>
+        <vrfName xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">default</vrfName>
+        <frame-to-cos-map xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">default-f2c</frame-to-cos-map>
+        <cos-to-frame-map xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">default-c2f</cos-to-frame-map>
+        <stats-collection xmlns="http://ciena.com/ns/yang/ciena-openconfig-interfaces">on</stats-collection>
+        <underlay-binding xmlns="http://ciena.com/ns/yang/ciena-underlay-binding">
+          <config>
+            <fd>v1000</fd>
+          </config>
+        </underlay-binding>
+      </config>
+       <ipv4 xmlns="http://ciena.com/ns/yang/ciena-openconfig-if-ip">
+        <addresses>
+          <address>
+            <ip>192.168.1.10</ip>
+            <config>
+              <ip>192.168.1.10</ip>
+              <prefix-length>30</prefix-length>
+            </config>
+            <state>
+              <ip>192.168.1.10</ip>
+              <prefix-length>30</prefix-length>
+              <origin>STATIC</origin>
+            </state>
+          </address>
+        </addresses>
+      </ipv4>
+    </interface>
+ </interfaces>
+ </config

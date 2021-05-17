@@ -1,0 +1,21 @@
+<config>  
+  <ldp xmlns="http://ciena.com/ns/yang/ciena/ciena-ldp">
+    <instance>
+      <tag>default</tag>
+      <lsr-id>{{ lbkIP }}</lsr-id>
+      <hello-interval>5</hello-interval>
+      <hello-holdtime>15</hello-holdtime>
+      <keepalive-timeout>30</keepalive-timeout>
+      <keepalive-interval>10</keepalive-interval>
+      <control-mode>ordered</control-mode>
+      <pw-status-tlv>false</pw-status-tlv>
+      <inter-area-lsp>false</inter-area-lsp>
+      <interfaces>
+        <interface>
+          <name>{{ lbkName }}</name>
+          <enable-ipv4>true</enable-ipv4>
+        </interface>
+      </interfaces>
+    </instance>
+  </ldp>
+</config>

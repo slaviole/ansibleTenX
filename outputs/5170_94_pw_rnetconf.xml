@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:ncx="http://netconfcentral.org/ns/yuma-ncx">
+  <pseudowires xmlns="urn:ietf:params:xml:ns:yang:ietf-pseudowires">
+    <pseudowire>
+      <name>svc102-1</name>
+      <mtu>1500</mtu>
+      <cw-negotiation>non-preferred</cw-negotiation>
+      <configured-pw>
+        <peer-ip>192.168.1.46</peer-ip>
+        <pw-id>102</pw-id>
+        <pw-status xmlns="http://ciena.com/ns/yang/ciena-ietf-pseudowires">false</pw-status>
+        <pw-status-refresh-timer xmlns="http://ciena.com/ns/yang/ciena-ietf-pseudowires">600</pw-status-refresh-timer>
+      </configured-pw>
+      <role xmlns="http://ciena.com/ns/yang/ciena-ietf-pseudowires" xmlns:cnpw="http://ciena.com/ns/yang/ciena-ietf-pseudowires">cnpw:primary</role>
+      <protect xmlns="http://ciena.com/ns/yang/ciena-ietf-pseudowires">false</protect>
+      <mode xmlns="http://ciena.com/ns/yang/ciena-ietf-pseudowires">mesh</mode>
+      <stats-collection xmlns="http://ciena.com/ns/yang/ciena-ietf-pseudowires">on</stats-collection>
+      <pw-loadbalance xmlns="http://ciena.com/ns/yang/ciena-ietf-pseudowires">disabled</pw-loadbalance>
+    </pseudowire>
+  </pseudowires>
+</data>

@@ -1,0 +1,10 @@
+<config>
+  <fds xmlns="urn:ciena:params:xml:ns:yang:ciena-pn:ciena-mef-fd">
+  {% for int in interfaces %}
+    <fd>
+      <name>v{{ int.intVid }}fd</name>
+      <mode>vpls</mode>
+    </fd>
+  {% endfor %}
+  </fds>
+</config>

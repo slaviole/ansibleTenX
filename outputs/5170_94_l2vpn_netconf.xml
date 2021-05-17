@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:ncx="http://netconfcentral.org/ns/yuma-ncx">
+  <l2vpn-services xmlns="http://ciena.com/ns/yang/ciena-l2vpn">
+    <l2vpn>
+      <name>svc102</name>
+      <mtu>1500</mtu>
+      <service-type>vlan</service-type>
+      <signaling-type>ldp</signaling-type>
+      <forwarding-domain>svc102</forwarding-domain>
+      <pseudowire>svc102-1</pseudowire>
+      <vc-mode-revertive>false</vc-mode-revertive>
+      <control-word>false</control-word>
+    </l2vpn>
+  </l2vpn-services>
+</data>
